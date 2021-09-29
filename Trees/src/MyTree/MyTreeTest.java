@@ -12,7 +12,7 @@ public class MyTreeTest {
 		Node root = new Tree.Node(5);
 		
 		tree.insert(root, 2);
-		tree.insert(root,  4);
+		tree.insert(root, 4);
 		tree.insert(root, 8);
 		tree.insert(root, 6);
 		tree.insert(root, 7);
@@ -21,6 +21,12 @@ public class MyTreeTest {
 		
 		System.out.println("Traverse The Tree");
 		tree.traverseInOrder(root);
+		
+		System.out.println("Traverse Pre Order");
+		tree.traversePreOrder(root);
+		
+		System.out.println("Traverse Post Order");
+		tree.traversePostOrder(root);
 	}
 	
 	public static class Tree{
@@ -65,6 +71,22 @@ public class MyTreeTest {
 				traverseInOrder(node.left);
 				System.out.println(" " + node.value);
 				traverseInOrder(node.right);
+			}
+		}
+		
+		public void traversePreOrder(Node node) {
+			if(node != null) {
+				System.out.println(" " + node.value);
+				traversePreOrder(node.left);
+				traversePreOrder(node.right);
+			}
+		}
+		
+		public void traversePostOrder(Node node) {
+			if(node != null) {
+				traversePostOrder(node.left);
+				traversePostOrder(node.right);
+				System.out.println(" " + node.value);
 			}
 		}
 		
