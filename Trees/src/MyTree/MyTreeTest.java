@@ -27,6 +27,9 @@ public class MyTreeTest {
 		
 		System.out.println("Traverse Post Order");
 		tree.traversePostOrder(root);
+		
+		System.out.println("Breadth First Search / Level Order");
+		tree.bfs(root);
 	}
 	
 	public static class Tree{
@@ -87,6 +90,49 @@ public class MyTreeTest {
 				traversePostOrder(node.left);
 				traversePostOrder(node.right);
 				System.out.println(" " + node.value);
+			}
+		}
+		
+		public int height (Node root) {
+			
+			if(root == null) {
+				
+				return 0;
+				
+			}else {
+				
+				int lheight = height(root.left);
+				int rheight = height(root.right);
+				
+				if(lheight > rheight) {
+					return (lheight + 1);
+				}else {
+					return (rheight + 1);
+				}
+				
+			}
+			
+		}
+		
+		public void printCurrentLevel(Node root, int level) {
+			if(root == null) {
+				return;
+			}
+			
+			if(level == 1) {
+				System.out.println(root.value + " ");
+			}else if(level > 1) {
+				printCurrentLevel(root.left, level - 1);
+				printCurrentLevel(root.right, level - 1);
+			}
+			
+		}
+		
+		public void bfs(Node root) {
+			int h = height(root);
+			
+			for(int i = 1; i<= h; i++) {
+				printCurrentLevel(root, i);
 			}
 		}
 		
